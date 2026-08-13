@@ -1,0 +1,4 @@
+faker
+pyodbc
+python-dotenv
+google-genai
