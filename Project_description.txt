@@ -1,0 +1,17 @@
+### Project Description
+
+**SelfHealSQL** is an AI-assisted, self-diagnosing SQL reporting pipeline designed to simulate how real-world data teams automate business reporting and handle failures in production data workflows.
+
+The system connects to a **SQL Server database** and automatically executes a set of business-focused SQL reports, including daily sales, top-selling products, sales by city, failed transactions, and top customer segments. Successful query results are automatically exported as timestamped CSV reports, eliminating the need for analysts to manually run recurring queries. 
+
+The key feature is its **failure-diagnosis workflow**. When a SQL query fails, the system captures structured failure information such as the query name, error type, error message, SQL statement, and traceback instead of simply terminating with a raw exception. This failure information is stored as JSON and becomes input for the AI diagnostic agent. 
+
+The AI diagnostic agent reads these failure logs and sends the relevant context to the **Google Gemini API**. It analyzes the failure and produces a structured diagnosis containing the **likely root cause, affected area, confidence level, and suggested fix**. This transforms an otherwise difficult-to-interpret SQL error into an actionable debugging starting point. 
+
+The project also includes a synthetic data generation layer using **Faker**, creating customers, products, orders, and order details so the complete pipeline can be tested locally. The system is designed to be deliberately tested with corrupted or unexpected data to determine whether the AI can identify meaningful failure patterns rather than simply repeating the original error.  
+
+Overall, **SelfHealSQL demonstrates an end-to-end data engineering and applied AI workflow**:
+
+**SQL Server → Business SQL → Automated Reporting → Structured Failure Logging → AI Diagnosis → Actionable Debugging Recommendation**
+
+It combines **SQL, Python, data engineering, automation, exception handling, structured logging, and generative AI** into a practical project that mirrors how modern reporting pipelines can fail and how AI can assist data teams in diagnosing those failures.
